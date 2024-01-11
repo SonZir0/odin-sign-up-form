@@ -4,22 +4,72 @@
 
 body {
     margin: 0px;
-    background-color: rgb(241, 209, 126);
+    background-color: rgb(231, 199, 118);
     font-size: 1.25rem;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-}
-
 img {
-    height: min((100svw * 1.7), 100svh);
-    width: min((100svh * 0.8), 100svw);
+    height: 100svh;
+    width: 100svw;
+    object-fit: cover;
 }
 
+.second-part {
+    margin: 1rem;
+
+    & p {
+        margin: 0px 0px 1rem;
+    }
+
+    & form {
+        background-color: rgb(241, 209, 126);
+        margin: 0px -1rem;
+        padding: 0px 1rem;
+
+        & section:first-of-type {
+            display: flex;
+            flex-direction: column;
+        }
+
+        & h2 {
+            font-size: 1.5rem;
+            margin: 1rem 0px;
+        }
+
+        & label {
+            display: block;
+        }
+
+        & input {
+            appearance: none;
+            border: 1px solid black;
+            border-radius: 6px;
+            width: 91svw;
+            font-size: 1.25rem;
+            padding: 0.1rem 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        & section + section {
+            padding: 8px 0px 16px;
+        }
+
+        & button {
+            display: block;
+            padding: 0.5rem 1.25rem;
+            margin: 0px auto;
+            border: 1px solid black;
+            border-radius: 25px;
+            font-size: 1.25rem;
+        }
+    }
+}
 
 footer {
     text-align: center;
     margin: 1rem;
+
+    & a {
+        color: black
+    }
 }
