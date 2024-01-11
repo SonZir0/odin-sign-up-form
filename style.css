@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    background-color: slategray;
+}
+
+.left-part {
+    height: 100vh;
+    background-image: url(neom-ecw2GLQqVus-unsplash.jpg);
+    background-size: 100svw 100svh;
+    background-repeat: no-repeat;
+}
+
+.right-part {
+
+}
