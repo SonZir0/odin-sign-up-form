@@ -4,16 +4,22 @@
 
 body {
     margin: 0px;
-    background-color: slategray;
+    background-color: rgb(241, 209, 126);
+    font-size: 1.25rem;
 }
 
-.left-part {
-    height: 100vh;
-    background-image: url(neom-ecw2GLQqVus-unsplash.jpg);
-    background-size: 100svw 100svh;
-    background-repeat: no-repeat;
+main {
+    display: flex;
+    flex-direction: column;
 }
 
-.right-part {
+img {
+    height: min((100svw * 1.7), 100svh);
+    width: min((100svh * 0.8), 100svw);
+}
 
+
+footer {
+    text-align: center;
+    margin: 1rem;
 }
