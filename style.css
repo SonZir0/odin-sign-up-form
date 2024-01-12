@@ -1,11 +1,24 @@
+:root {
+    --main-color: rgb(231, 199, 118);
+    --highlight-color: rgb(241, 209, 126);
+    --small-screen-padding-offset: 6svw;
+    --big-screen-form-left-offset: 2svw;
+    --big-screen-form-right-offset: 7.2svw;
+}
+
 * {
     box-sizing: border-box;
 }
 
-body {
+body,
+main {
     margin: 0px;
-    background-color: rgb(231, 199, 118);
     font-size: 1.25rem;
+    background-color: var(--main-color);
+}
+
+.first-part {
+    height: 100svh;
 }
 
 img {
@@ -15,16 +28,16 @@ img {
 }
 
 .second-part {
-    margin: 1rem;
+    margin: 1rem var(--small-screen-padding-offset);
 
     & p {
         margin: 0px 0px 1rem;
     }
 
     & form {
-        background-color: rgb(241, 209, 126);
-        margin: 0px -1rem;
-        padding: 0px 1rem;
+        background-color: var(--highlight-color);
+        margin: 0px calc(-1*var(--small-screen-padding-offset));
+        padding: 0px var(--small-screen-padding-offset);
 
         & section:first-of-type {
             display: flex;
@@ -44,14 +57,14 @@ img {
             appearance: none;
             border: 1px solid black;
             border-radius: 6px;
-            width: 91svw;
+            width: 84svw;
             font-size: 1.25rem;
             padding: 0.1rem 0.25rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 2svh;
         }
 
-        & section + section {
-            padding: 8px 0px 16px;
+        & section+section {
+            padding: 0px 0px 2svh;
         }
 
         & button {
@@ -71,5 +84,92 @@ footer {
 
     & a {
         color: black
+    }
+}
+
+@media (width > 650px) {
+
+    main {
+        display: flex;
+    }
+
+    img {
+        height: 100svh;
+        width: 30svw;
+        object-fit: cover;
+    }
+
+    .second-part {
+        max-height: 100svh;
+        width: 60svw;
+        margin: 15svh 0px 10svh var(--big-screen-form-left-offset);
+
+    }
+
+    .second-part form {
+        margin: 0px calc(-1*var(--big-screen-form-right-offset)) 0px calc(-1*var(--big-screen-form-left-offset));
+        padding: 0px var(--big-screen-form-right-offset) 0px var(--big-screen-form-left-offset);
+
+
+        & section:first-of-type {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        & h2 {
+            width: 50svw;
+        }
+
+        & section>div {
+            display: flex;
+            width: 60svw;
+
+            & div {
+                width: 150px;
+                margin-right: auto;
+
+                & input {
+                    width: 15svw;
+                    min-width: 150px;
+                }
+            }
+        }
+
+        & button {
+            margin: 0px;
+            border-radius: 6px;
+        }
+    }
+
+    footer {
+        position: absolute;
+        bottom: -1svh;
+        left: calc((100svw - 240px)/2);
+    }
+
+    /* adjustments for small height */
+    @media (height < 600px) {
+
+        body,
+        main {
+            font-size: 16px;
+        }
+
+        footer {
+            color: white;
+            position: absolute;
+            left: max(-14px, (30svw - 240px)/2);
+
+            & a {
+                color: white;
+            }
+        }
+
+        @media (height < 450px) {
+            .second-part {
+                margin-top: 4px;
+            }            
+        }
     }
 }
