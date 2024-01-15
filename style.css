@@ -2,9 +2,11 @@
     --main-color: rgb(231, 199, 118);
     --highlight-color: rgb(241, 209, 126);
     --filler-color: rgb(53, 38, 2);
+    --focus-highlight-color: blue;
     --small-screen-form-bg-coloring-offset: 6svw;
     --big-screen-form-left-right-margin: 3svw;
     --big-screen-form-bg-coloring-offset: max(3svw, (98svw - 30svw - 700px));
+    --system-ui-font-stack: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 * {
@@ -15,6 +17,7 @@ body,
 main {
     margin: 0px;
     font-size: 1.25rem;
+    font-family: var(--system-ui-font-stack);
     background-color: var(--main-color);
 }
 
@@ -60,10 +63,43 @@ img {
             appearance: none;
             border: 1px solid black;
             border-radius: 6px;
-            width: 84svw;
+            width: 80svw;
             font-size: 1.25rem;
+            font-family: var(--system-ui-font-stack);
             padding: 0.1rem 0.25rem;
             margin-bottom: 2svh;
+        }
+
+        & .mismatch {
+            outline: 2px solid red;
+            border-color: red;
+        }
+
+        & #confirm_password.mismatch {
+            margin-bottom: calc(2svh + 0.75rem);
+
+            &+span {
+                position: relative;
+            }
+        }
+
+        & #confirm_password.mismatch+span::after {
+            position: absolute;
+            content: "Passwords do not match";
+            color: white;
+            border-radius: 6px;
+            background-color: black;
+            text-wrap: nowrap;
+            padding: 5px;
+            top: 2rem;
+            right: -2px;
+            font-size: 1rem;
+        }
+
+        & input:focus {
+            outline: 2px solid var(--focus-highlight-color);
+            border-color: var(--focus-highlight-color);
+            box-shadow: 3px 3px 8px gray;
         }
 
         & section+section {
@@ -73,10 +109,12 @@ img {
         & button {
             display: block;
             padding: 0.5rem 1.25rem;
-            margin: 0px auto;
+            margin: 0.75rem auto 0px;
+            background-color: gold;
             border: 1px solid black;
             border-radius: 25px;
             font-size: 1.25rem;
+            font-family: var(--system-ui-font-stack);
         }
     }
 }
@@ -159,9 +197,19 @@ footer {
         }
 
         & button {
-            margin: 0px auto;
+            margin: 0.75rem 0px 0px;
             border-radius: 6px;
         }
+
+        & #confirm_password.mismatch {
+            margin-bottom: 2svh;
+        }
+
+        & #confirm_password.mismatch+span::after {
+            top: 2.25rem;
+            font-size: 0.75rem;
+        }
+
     }
 
     footer {
@@ -175,20 +223,29 @@ footer {
         .second-part form label {
             margin-right: 12svw;
         }
+
+        .second-part form #confirm_password.mismatch + span::after, footer {
+            font-size: 1rem;
+        }
     }
 
     /* adjustments for small height */
     @media (height < 600px) {
 
         body,
-        main, .second-part form button {
-            font-size: 16px;
+        main,
+        .second-part form button {
+            font-size: 1rem;
+        }
+
+        .second-part form #confirm_password.mismatch + span::after, footer {
+            font-size: 0.75rem;
         }
 
         footer {
             color: white;
             position: absolute;
-            left: max(-14px, (30svw - 240px)/2);
+            left: max(4px, (30svw - 192px)/2);
 
             & a {
                 color: white;
