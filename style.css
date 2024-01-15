@@ -1,6 +1,7 @@
 :root {
     --main-color: rgb(231, 199, 118);
     --highlight-color: rgb(241, 209, 126);
+    --filler-color: rgb(53, 38, 2);
     --small-screen-form-bg-coloring-offset: 6svw;
     --big-screen-form-left-right-margin: 3svw;
     --big-screen-form-bg-coloring-offset: max(3svw, (98svw - 30svw - 700px));
@@ -51,6 +52,8 @@ img {
 
         & label {
             display: block;
+            text-wrap: nowrap;
+            margin-right: 3svw;
         }
 
         & input {
@@ -94,6 +97,19 @@ footer {
         overflow-x: hidden;
     }
 
+    .filler {
+        background-color: var(--filler-color);
+        height: 100svh;
+    }
+
+    .filler.first {
+        flex: 3 1 auto;
+    }
+
+    .filler.second {
+        flex: 5 1 auto;
+    }
+
     img {
         height: 100svh;
         width: 30svw;
@@ -103,7 +119,7 @@ footer {
     .second-part {
         max-height: 100svh;
         width: 700px;
-        margin: 12svh var(--big-screen-form-left-right-margin) 12svh var(--big-screen-form-left-right-margin);
+        margin: 18svh var(--big-screen-form-left-right-margin) 15svh var(--big-screen-form-left-right-margin);
 
     }
 
@@ -119,31 +135,31 @@ footer {
         }
 
         & h2 {
-            width: 50svw;
+            width: 40svw;
         }
 
         & section>div {
             display: flex;
-            justify-content: space-between;
-            gap: 75px;
-            width: 60svw;
+            gap: 76px;
 
             & div {
                 display: flex;
                 flex-wrap: wrap;
-                flex: 1 1 200px;
-                max-width: 250px;
+                max-width: 314px;
                 min-width: 150px;
+                flex: 1 1 0px;
 
                 & input {
-                    max-width: 250px;
+                    max-width: 314px;
                     min-width: 150px;
+                    width: 150px;
+                    flex: 1 1 0px;
                 }
             }
         }
 
         & button {
-            margin: 0px;
+            margin: 0px auto;
             border-radius: 6px;
         }
     }
@@ -154,11 +170,18 @@ footer {
         left: calc((100svw - 240px)/2);
     }
 
+    /* adjustments for larger width */
+    @media (width > 800px) {
+        .second-part form label {
+            margin-right: 12svw;
+        }
+    }
+
     /* adjustments for small height */
     @media (height < 600px) {
 
         body,
-        main {
+        main, .second-part form button {
             font-size: 16px;
         }
 
