@@ -1,9 +1,9 @@
 :root {
     --main-color: rgb(231, 199, 118);
     --highlight-color: rgb(241, 209, 126);
-    --small-screen-padding-offset: 6svw;
-    --big-screen-form-left-offset: 2svw;
-    --big-screen-form-right-offset: 7.2svw;
+    --small-screen-form-bg-coloring-offset: 6svw;
+    --big-screen-form-left-right-margin: 3svw;
+    --big-screen-form-bg-coloring-offset: max(3svw, (98svw - 30svw - 700px));
 }
 
 * {
@@ -28,7 +28,7 @@ img {
 }
 
 .second-part {
-    margin: 1rem var(--small-screen-padding-offset);
+    margin: 1rem var(--small-screen-form-bg-coloring-offset);
 
     & p {
         margin: 0px 0px 1rem;
@@ -36,8 +36,8 @@ img {
 
     & form {
         background-color: var(--highlight-color);
-        margin: 0px calc(-1*var(--small-screen-padding-offset));
-        padding: 0px var(--small-screen-padding-offset);
+        margin: 0px calc(-1*var(--small-screen-form-bg-coloring-offset));
+        padding: 0px var(--small-screen-form-bg-coloring-offset);
 
         & section:first-of-type {
             display: flex;
@@ -91,6 +91,7 @@ footer {
 
     main {
         display: flex;
+        overflow-x: hidden;
     }
 
     img {
@@ -101,14 +102,14 @@ footer {
 
     .second-part {
         max-height: 100svh;
-        width: 60svw;
-        margin: 15svh 0px 10svh var(--big-screen-form-left-offset);
+        width: 700px;
+        margin: 12svh var(--big-screen-form-left-right-margin) 12svh var(--big-screen-form-left-right-margin);
 
     }
 
     .second-part form {
-        margin: 0px calc(-1*var(--big-screen-form-right-offset)) 0px calc(-1*var(--big-screen-form-left-offset));
-        padding: 0px var(--big-screen-form-right-offset) 0px var(--big-screen-form-left-offset);
+        margin: 0px calc(-1*var(--big-screen-form-bg-coloring-offset)) 0px calc(-1*var(--big-screen-form-left-right-margin));
+        padding: 0px var(--big-screen-form-bg-coloring-offset) 0px var(--big-screen-form-left-right-margin);
 
 
         & section:first-of-type {
@@ -123,14 +124,19 @@ footer {
 
         & section>div {
             display: flex;
+            justify-content: space-between;
+            gap: 75px;
             width: 60svw;
 
             & div {
-                width: 150px;
-                margin-right: auto;
+                display: flex;
+                flex-wrap: wrap;
+                flex: 1 1 200px;
+                max-width: 250px;
+                min-width: 150px;
 
                 & input {
-                    width: 15svw;
+                    max-width: 250px;
                     min-width: 150px;
                 }
             }
@@ -168,8 +174,8 @@ footer {
 
         @media (height < 450px) {
             .second-part {
-                margin-top: 4px;
-            }            
+                margin-top: 12px;
+            }
         }
     }
 }
